@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Restaurante</string>
+    <string name="endereco">Endereço:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="site">Site:</string>
+    <string name="email">Email:</string>
+    <string name="data_nascimento">Data Nascimento:</string>
+    <string name="nome">Nome:</string>
+    <string name="descricao">Descrição:</string>
+</resources>
