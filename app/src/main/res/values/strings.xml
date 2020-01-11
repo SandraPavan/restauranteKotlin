@@ -7,4 +7,5 @@
     <string name="data_nascimento">Data Nascimento:</string>
     <string name="nome">Nome:</string>
     <string name="descricao">Descrição:</string>
+    <string name="link">Link Cardápio:</string>
 </resources>
