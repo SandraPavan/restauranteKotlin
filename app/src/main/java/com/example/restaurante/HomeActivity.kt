@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import br.example.restaurante.db.RestauranteRepository
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -20,12 +21,6 @@ class HomeActivity : AppCompatActivity() {
         myToolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(myToolbar)
 
-        val restaurantes = arrayOf("Hora da Fome", "Prato do dia", "Delide")
-        val adapter
-                = ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurantes)
-
-        var listaRestaurante = lista
-        listaRestaurante.setAdapter(adapter);
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -48,6 +43,19 @@ class HomeActivity : AppCompatActivity() {
             }
 
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        val restaurantes = RestauranteRepository(this).findAll()
+        val adapter= ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurantes)
+        lista?.adapter = adapter
+        adapter.notifyDataSetChanged()
+
+        lista.setOnItemClickListener { _, _, position, id ->
+            val intent = Intent(this, RestauranteActivity::class.java)
+            intent.putExtra("restaurante", restaurantes?.get(position))
+            startActivity(intent)
         }
     }
 }
