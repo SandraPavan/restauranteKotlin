@@ -47,7 +47,7 @@ class RestauranteActivity : AppCompatActivity() {
             restaurante?.site = txtSite?.text.toString()
             restaurante?.linkcardapio = txtLink?.text.toString()
 
-            if(restaurante?.id?.equals(0)!!){
+            if(restaurante?.id?.toInt() == 0){
                 RestauranteRepository(this).create(restaurante!!)
             }else{
                 RestauranteRepository(this).update(restaurante!!)
